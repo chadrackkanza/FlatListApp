@@ -1,7 +1,9 @@
 import { useState, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, RefreshControl,  FlatList, ScrollView, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, RefreshControl,  FlatList, ScrollView, TextInput, Button} from 'react-native';
 import { posts } from './data';
+import SearchScreen from './SearchScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 function PostItem({post}){
   return (
     <View style={styles.post}>
@@ -41,10 +43,10 @@ export default function App() {
     ]
   }
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider >
       <StatusBar style="auto" />
 
-      <FlatList
+      {/* <FlatList
         data={posts}
         renderItem={({item}) => <PostItem post={item} /> }
         keyExtractor={item => item.id}
@@ -55,13 +57,10 @@ export default function App() {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-      />
+      /> */}
 
-
-      
-
-
-    </SafeAreaView>
+      <SearchScreen/>
+    </SafeAreaProvider>
   );
 }
 
