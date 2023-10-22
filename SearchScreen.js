@@ -8,6 +8,8 @@ const SearchScreen = () => {
     const [datas, setDatas] =useState([])
     const updateSearch = (value) => {
         setSearch(value)
+        console.log(value)
+        console.log(search)
         if(search.length > 0){
             let newDatas = posts.filter(post => post.title.toUpperCase().indexOf(search.toUpperCase()) !== -1)
             setDatas(newDatas)        }
